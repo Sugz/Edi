@@ -36,7 +36,7 @@
         #region Fields
         private MRUSortMethod mPinEntryAtHeadOfList = MRUSortMethod.PinnedEntriesFirst;
 
-        private ObservableCollection<MRUEntryVM> mListOfMRUEntries;
+        private ObservableCollection<MRUEntryVieModel> mListOfMRUEntries;
 
         private int mMaxMruEntryCount;
 
@@ -124,7 +124,7 @@
         }
 
         [XmlArrayItem("MRUList", IsNullable = false)]
-        public ObservableCollection<MRUEntryVM> ListOfMRUEntries
+        public ObservableCollection<MRUEntryVieModel> ListOfMRUEntries
         {
             get
             {
@@ -209,7 +209,7 @@
         /// </summary>
         /// <param name="bPinOrUnPinMruEntry"></param>
         /// <param name="mruEntry"></param>
-        public bool PinUnpinEntry(bool bPinOrUnPinMruEntry, MRUEntryVM mruEntry)
+        public bool PinUnpinEntry(bool bPinOrUnPinMruEntry, MRUEntryVieModel mruEntry)
         {
             try
             {
@@ -221,7 +221,7 @@
                 // pin an MRU entry into the next available pinned mode spot
                 if (bPinOrUnPinMruEntry == true)
                 {
-                    MRUEntryVM e = this.mListOfMRUEntries.Single(mru => mru.IsPinned == false && mru.PathFileName == mruEntry.PathFileName);
+                    MRUEntryVieModel e = this.mListOfMRUEntries.Single(mru => mru.IsPinned == false && mru.PathFileName == mruEntry.PathFileName);
 
                     if (this.PinSortMode == MRUSortMethod.PinnedEntriesFirst)
                         this.mListOfMRUEntries.Remove(e);
@@ -239,7 +239,7 @@
                 else
                 {
                     // unpin an MRU entry into the next available unpinned spot
-                    MRUEntryVM e = this.mListOfMRUEntries.Single(mru => mru.IsPinned == true && mru.PathFileName == mruEntry.PathFileName);
+                    MRUEntryVieModel e = this.mListOfMRUEntries.Single(mru => mru.IsPinned == true && mru.PathFileName == mruEntry.PathFileName);
 
                     if (this.PinSortMode == MRUSortMethod.PinnedEntriesFirst)
                         this.mListOfMRUEntries.Remove(e);
@@ -275,20 +275,20 @@
             if (newEntry == null || newEntry == string.Empty)
                 return;
 
-            this.AddMRUEntry(new MRUEntryVM() { IsPinned = false, PathFileName = newEntry });
+            this.AddMRUEntry(new MRUEntryVieModel() { IsPinned = false, PathFileName = newEntry });
         }
 
-        public void AddMRUEntry(MRUEntryVM newEntry)
+        public void AddMRUEntry(MRUEntryVieModel newEntry)
         {
             if (newEntry == null) return;
 
             try
             {
                 if (this.mListOfMRUEntries == null)
-                    this.mListOfMRUEntries = new ObservableCollection<MRUEntryVM>();
+                    this.mListOfMRUEntries = new ObservableCollection<MRUEntryVieModel>();
 
                 // Remove all entries that point to the path we are about to insert
-                MRUEntryVM e = this.mListOfMRUEntries.SingleOrDefault(item => newEntry.PathFileName == item.PathFileName);
+                MRUEntryVieModel e = this.mListOfMRUEntries.SingleOrDefault(item => newEntry.PathFileName == item.PathFileName);
 
                 if (e != null)
                 {
@@ -305,10 +305,10 @@
 
                 // Add model entry in ViewModel collection (First pinned entry or first unpinned entry)
                 if (newEntry.IsPinned == true)
-                    this.mListOfMRUEntries.Insert(0, new MRUEntryVM(newEntry));
+                    this.mListOfMRUEntries.Insert(0, new MRUEntryVieModel(newEntry));
                 else
                 {
-                    this.mListOfMRUEntries.Insert(this.CountPinnedEntries(), new MRUEntryVM(newEntry));
+                    this.mListOfMRUEntries.Insert(this.CountPinnedEntries(), new MRUEntryVieModel(newEntry));
                 }
             }
             catch (Exception exp)
@@ -329,7 +329,7 @@
                 if (this.mListOfMRUEntries == null)
                     return false;
 
-                MRUEntryVM e = this.mListOfMRUEntries.Single(mru => mru.PathFileName == fileName);
+                MRUEntryVieModel e = this.mListOfMRUEntries.Single(mru => mru.PathFileName == fileName);
 
                 this.mListOfMRUEntries.Remove(e);
 
@@ -348,14 +348,14 @@
             return false;
         }
 
-        public bool RemovePinEntry(MRUEntryVM mruEntry)
+        public bool RemovePinEntry(MRUEntryVieModel mruEntry)
         {
             try
             {
                 if (this.mListOfMRUEntries == null)
                     return false;
 
-                MRUEntryVM e = this.mListOfMRUEntries.Single(mru => mru.PathFileName == mruEntry.PathFileName);
+                MRUEntryVieModel e = this.mListOfMRUEntries.Single(mru => mru.PathFileName == mruEntry.PathFileName);
 
                 this.mListOfMRUEntries.Remove(e);
 
@@ -374,7 +374,7 @@
             return false;
         }
 
-        public MRUEntryVM FindMRUEntry(string filePathName)
+        public MRUEntryVieModel FindMRUEntry(string filePathName)
         {
             try
             {

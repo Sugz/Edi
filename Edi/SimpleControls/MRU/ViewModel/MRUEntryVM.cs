@@ -9,7 +9,7 @@
 
   using SimpleControls.Command;
 
-  public class MRUEntryVM : Base.BaseViewModel
+  public class MRUEntryVieModel : Base.BaseViewModel
   {
     #region fields
     private Model.MRUEntry mMRUEntry;
@@ -19,7 +19,7 @@
     /// <summary>
     /// Constructor
     /// </summary>
-    public MRUEntryVM()
+    public MRUEntryVieModel()
     {
       this.mMRUEntry = new Model.MRUEntry();
       this.IsPinned = false;
@@ -29,7 +29,7 @@
     /// Constructor from model
     /// </summary>
     /// <param name="model"></param>
-    public MRUEntryVM(Model.MRUEntry model) : this()
+    public MRUEntryVieModel(Model.MRUEntry model) : this()
     {
       this.mMRUEntry = new Model.MRUEntry(model);
     }
@@ -38,7 +38,7 @@
     /// Copy constructor
     /// </summary>
     /// <param name="copySource"></param>
-    public MRUEntryVM(MRUEntryVM copySource)
+    public MRUEntryVieModel(MRUEntryVieModel copySource)
       : this()
     {
       this.mMRUEntry = new Model.MRUEntry(copySource.mMRUEntry);

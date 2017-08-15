@@ -90,7 +90,7 @@
     }
     #endregion AddRemovePinnedEntries
 
-    internal void RemoveMruPath(string p)
+    internal void RemoveEntry(string p)
     {
       if (this.Entries != null && p != null)
         this.Entries.RemoveAll(item => p == item.PathFileName);      

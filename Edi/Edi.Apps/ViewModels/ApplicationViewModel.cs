@@ -23,6 +23,8 @@ namespace Edi.Apps.ViewModels
     using Microsoft.Practices.Prism.PubSubEvents;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Win32;
+    using MRULib.MRU.Interfaces;
+    using MRULib.MRU.ViewModels;
     using MsgBox;
     using SimpleControls.MRU.ViewModel;
     using System;
@@ -502,19 +504,21 @@ namespace Edi.Apps.ViewModels
             return IntegrateDocumentVM(fileViewModel, filePath, AddIntoMRU);
         }
 
-        private IFileBaseViewModel IntegrateDocumentVM(IFileBaseViewModel fileViewModel,
-                                                                                        string filePath,
-                                                                                        bool AddIntoMRU)
+        private IFileBaseViewModel IntegrateDocumentVM(
+            IFileBaseViewModel fileViewModel,
+            string filePath,
+            bool AddIntoMRU)
         {
             if (fileViewModel == null)
             {
+                var mruList = ServiceLocator.Current.GetInstance<IMRUListViewModel>();
 
-                if (this.mSettingsManager.SessionData.MruList.FindMRUEntry(filePath) != null)
+                if (mruList.FindMRUEntry(filePath) != null)
                 {
                     if (_MsgBox.Show(string.Format(Edi.Util.Local.Strings.STR_ERROR_LOADING_FILE_MSG, filePath),
                                                    Edi.Util.Local.Strings.STR_ERROR_LOADING_FILE_CAPTION, MsgBoxButtons.YesNo) == MsgBoxResult.Yes)
                     {
-                        this.mSettingsManager.SessionData.MruList.RemoveEntry(filePath);
+                        mruList.RemoveEntry(filePath);
                     }
                 }
 
@@ -764,7 +768,7 @@ namespace Edi.Apps.ViewModels
         {
             try
             {
-                var cmdParam = o as MRUEntryVM;
+                var cmdParam = o as MRUEntryViewModel;
 
                 if (cmdParam == null)
                     return;
@@ -789,7 +793,7 @@ namespace Edi.Apps.ViewModels
         {
             try
             {
-                var cmdParam = o as MRUEntryVM;
+                var cmdParam = o as MRUEntryViewModel;
 
                 if (cmdParam == null)
                     return;
@@ -797,7 +801,7 @@ namespace Edi.Apps.ViewModels
                 if (e != null)
                     e.Handled = true;
 
-                this.GetToolWindowVM<RecentFilesViewModel>().MruList.AddMRUEntry(cmdParam);
+                this.GetToolWindowVM<RecentFilesViewModel>().MruList.UpdateEntry(cmdParam);
             }
             catch (Exception exp)
             {
@@ -814,7 +818,7 @@ namespace Edi.Apps.ViewModels
         {
             try
             {
-                var cmdParam = o as MRUEntryVM;
+                var cmdParam = o as MRUEntryViewModel;
 
                 if (cmdParam == null)
                     return;
@@ -822,7 +826,9 @@ namespace Edi.Apps.ViewModels
                 if (e != null)
                     e.Handled = true;
 
-                this.GetToolWindowVM<RecentFilesViewModel>().MruList.RemovePinEntry(cmdParam);
+                var mruList = ServiceLocator.Current.GetInstance<IMRUListViewModel>();
+
+                mruList.RemovePinEntry(cmdParam);
             }
             catch (Exception exp)
             {
@@ -1353,7 +1359,7 @@ namespace Edi.Apps.ViewModels
                     return null;
                 else
                 {
-                    var s = new StartPageViewModel(this.mSettingsManager.SessionData.MruList);
+                    var s = new StartPageViewModel();
 
                     s.DocumentEvent += ProcessDocumentEvent;
 
@@ -1453,12 +1459,14 @@ namespace Edi.Apps.ViewModels
                                 {
                                     if (error is FileNotFoundException)
                                     {
-                                        if (this.mSettingsManager.SessionData.MruList.FindMRUEntry(filePath) != null)
+                                        var mruList = ServiceLocator.Current.GetInstance<IMRUListViewModel>();
+
+                                        if (mruList.FindMRUEntry(filePath) != null)
                                         {
                                             if (_MsgBox.Show(string.Format(Edi.Util.Local.Strings.STR_ERROR_LOADING_FILE_MSG, filePath),
                                                              Edi.Util.Local.Strings.STR_ERROR_LOADING_FILE_CAPTION, MsgBoxButtons.YesNo) == MsgBoxResult.Yes)
                                             {
-                                                this.mSettingsManager.SessionData.MruList.RemoveEntry(filePath);
+                                                mruList.RemoveEntry(filePath);
                                             }
                                         }
 

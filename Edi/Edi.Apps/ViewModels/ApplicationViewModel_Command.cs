@@ -16,6 +16,8 @@
     using MiniUML.Framework;
     using MsgBox;
     using Edi.Themes;
+    using Microsoft.Practices.ServiceLocation;
+    using MRULib.MRU.Interfaces;
 
     public partial class ApplicationViewModel
     {
@@ -302,7 +304,8 @@
                     {
                         if (this.OnSave(this.ActiveDocument, true))
                         {
-                            this.mSettingsManager.SessionData.MruList.AddMRUEntry(this.ActiveDocument.FilePath);
+                            var mruList = ServiceLocator.Current.GetInstance<IMRUListViewModel>();
+                            mruList.UpdateEntry(this.ActiveDocument.FilePath);
                             this.mSettingsManager.SessionData.LastActiveFile = this.ActiveDocument.FilePath;
                         }
                     }

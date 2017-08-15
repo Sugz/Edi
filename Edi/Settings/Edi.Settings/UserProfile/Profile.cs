@@ -5,24 +5,27 @@
 	using FileSystemModels.Models;
 	using Edi.Settings.Interfaces;
 	using SimpleControls.MRU.ViewModel;
+    using MRULib.MRU.Models.Persist;
 
-	/// <summary>
-	/// This class implements the model of the user profile part
-	/// of the application. Typically, users have implicit run-time
-	/// settings that should be re-activated when the application
-	/// is re-started at a later point in time (e.g. window size
-	/// and position).
-	/// 
-	/// This class organizes these per user specific profile settings
-	/// and is responsible for their storage (at program end) and
-	/// retrieval at the start-up of the application.
-	/// </summary>
-	public class Profile : IProfile
+    /// <summary>
+    /// This class implements the model of the user profile part
+    /// of the application. Typically, users have implicit run-time
+    /// settings that should be re-activated when the application
+    /// is re-started at a later point in time (e.g. window size
+    /// and position).
+    /// 
+    /// This class organizes these per user specific profile settings
+    /// and is responsible for their storage (at program end) and
+    /// retrieval at the start-up of the application.
+    /// </summary>
+    public class Profile : IProfile
 	{
 		#region fields
-		private MRUListVM mMruList;
+////		private MRUListVM mMruList;
 
-		private List<string> mFindHistoryList;
+        private MRUList _MruList;
+
+        private List<string> mFindHistoryList;
 		private List<string> mReplaceHistoryList;
 
 		protected static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -41,10 +44,8 @@
 
 			this.LastActiveFile = string.Empty;
 
-			// Construct MRUListVM ViewModel with parameter to decide whether pinned entries
-			// are sorted into the first (pinned list) spot or not (favourites list)
-			this.mMruList = new MRUListVM(MRUSortMethod.PinnedEntriesFirst);
-		}
+            _MruList = new MRUList();
+        }
 		#endregion constructor
 
 		#region properties
@@ -74,21 +75,21 @@
 		/// <summary>
 		/// List of most recently used files
 		/// </summary>
-		public MRUListVM MruList
+		public MRUList MruList
 		{
 			get
 			{
-				if (this.mMruList == null)
-					this.mMruList = new MRUListVM();
+				if (this._MruList == null)
+					this._MruList = new MRUList();
 
-				return this.mMruList;
+				return this._MruList;
 			}
 
 			set
 			{
-				if (this.mMruList != value)
+				if (this._MruList != value)
 				{
-					this.mMruList = value;
+					this._MruList = value;
 				}
 			}
 		}
@@ -150,7 +151,7 @@
 
 		#region methods
 		public void CheckSettingsOnLoad(double SystemParameters_VirtualScreenLeft,
-																		double SystemParameters_VirtualScreenTop)
+										double SystemParameters_VirtualScreenTop)
 		{
 			if (this.MainWindowPosSz == null)
 				this.MainWindowPosSz = new ViewPosSizeModel(100, 100, 600, 500);
