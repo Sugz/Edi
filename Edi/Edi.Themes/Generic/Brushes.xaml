@@ -91,7 +91,7 @@
   <SolidColorBrush x:Key="HyperlinkForegroundDisabled" Color="#88888888"/>
   <SolidColorBrush x:Key="HyperlinkForeground" Color="Blue"/>
 
-  <SolidColorBrush x:Key="PinableListViewForegroundDisabled" Color="#88888888"/>
+  <!-- SolidColorBrush x:Key="PinableListViewForegroundDisabled" Color="#88888888"/ -->
   <SolidColorBrush x:Key="ToolViewBackground" Color="White"/>
 
   <SolidColorBrush x:Key="WindowBackgroundBrush" Color="White" />

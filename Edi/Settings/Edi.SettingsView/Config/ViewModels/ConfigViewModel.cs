@@ -7,7 +7,6 @@
 	using ICSharpCode.AvalonEdit;
 	using ICSharpCode.AvalonEdit.Edi.BlockSurround;
 	using Edi.Settings.ProgramSettings;
-	using SimpleControls.MRU.ViewModel;
 	using UnitComboLib.Unit.Screen;
 	using UnitComboLib.ViewModel;
 
@@ -16,7 +15,6 @@
 		#region fields
 		private bool mWordWrapText;
 		private bool mReloadOpenFilesOnAppStart;
-		private MRUSortMethod mPinSortMode;
 		private bool mRunSingleInstance;
 
 		private LanguageCollection mLanguageSelected;
@@ -40,7 +38,6 @@
 			this.mWordWrapText = false;
 			this.mReloadOpenFilesOnAppStart = false;
 			this.mRunSingleInstance = true;
-			this.mPinSortMode = MRUSortMethod.PinnedEntriesFirst;
 
 			this.WordWrapText = false;
 
@@ -90,26 +87,6 @@
 		/// Expose AvalonEdit Text Editing options for editing in program settings view.
 		/// </summary>
 		public TextEditorOptions EditorTextOptions { get; set; }
-
-		/// <summary>
-		/// Get/set MRU pin sort mode to determine MRU pin behaviour.
-		/// </summary>
-		public MRUSortMethod MruPinSortMode
-		{
-			get
-			{
-				return this.mPinSortMode;
-			}
-
-			set
-			{
-				if (this.mPinSortMode != value)
-				{
-					this.mPinSortMode = value;
-					this.RaisePropertyChanged(() => this.MruPinSortMode);
-				}
-			}
-		}
 
 		#region Application Behaviour
 		/// <summary>
@@ -386,9 +363,6 @@
 		/// <param name="settingData"></param>
 		public void LoadOptionsFromModel(Options settingData)
 		{
-			// Load Mru Options from model
-			this.MruPinSortMode = settingData.MRU_SortMethod;
-
 			this.ReloadOpenFilesOnAppStart = settingData.ReloadOpenFilesOnAppStart;
 			this.RunSingleInstance = settingData.RunSingleInstance;
 
@@ -422,7 +396,6 @@
 		/// <param name="settingData"></param>
 		public void SaveOptionsToModel(Options settingData)
 		{
-			settingData.MRU_SortMethod = this.MruPinSortMode;
 			settingData.ReloadOpenFilesOnAppStart = this.ReloadOpenFilesOnAppStart;
 			settingData.RunSingleInstance = this.RunSingleInstance;
 

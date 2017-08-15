@@ -124,8 +124,8 @@
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MsgBox, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.1\lib\net451\MsgBoxSamples_Demo_Version_1_4_0\MsgBox.dll</HintPath>
+    <Reference Include="MsgBox, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.2\lib\net451\MsgBox.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -141,8 +141,8 @@
     <Reference Include="UnitComboLib">
       <HintPath>..\..\02_Libs\00_bin\UnitComboLib\UnitComboLib.dll</HintPath>
     </Reference>
-    <Reference Include="UserNotification, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.1\lib\net451\MsgBoxSamples_Demo_Version_1_4_0\UserNotification.dll</HintPath>
+    <Reference Include="UserNotification, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dirkster.UserNotifications.1.3.1\lib\net451\UserNotification.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="YalvLib">
@@ -186,6 +186,10 @@
     <ProjectReference Include="..\..\MiniUML\MiniUML.View\MiniUML.View.csproj">
       <Project>{aad6b1d6-f529-40f8-9786-dc8e2fdf0ad6}</Project>
       <Name>MiniUML.View</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MRU\MRULib\MRULib.csproj">
+      <Project>{59c17825-de5a-42bf-89a6-715b64af89f8}</Project>
+      <Name>MRULib</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleControls\SimpleControls.csproj">
       <Project>{0E69BE38-78C0-4662-A0E1-56C5913B5C3A}</Project>
@@ -431,14 +435,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MetroDark\Controls\Hyperlink.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MetroDark\EdiControls\PinableListView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MetroDark\EdiControls\MsgBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -6,15 +6,13 @@ namespace Edi.Documents.ViewModels.StartPage
     using System.Windows.Input;
     using Edi.Core.ViewModels.Command;
     using MsgBox;
-    using SimpleControls.MRU.ViewModel;
     using Microsoft.Practices.ServiceLocation;
+    using MRULib.MRU.Interfaces;
 
     public class StartPageViewModel : Edi.Core.ViewModels.FileBaseViewModel
     {
         #region fields
         public const string StartPageContentId = ">StartPage<";
-
-        private MRUListVM mRecent;
         #endregion fields
 
         #region constructor
@@ -26,15 +24,6 @@ namespace Edi.Documents.ViewModels.StartPage
             this.Title = Edi.Util.Local.Strings.STR_STARTPAGE_TITLE;
             this.StartPageTip = Edi.Util.Local.Strings.STR_STARTPAGE_WELCOME_TT;
             this.ContentId = StartPageViewModel.StartPageContentId;
-        }
-
-        /// <summary>
-        /// Parameterized constructor
-        /// </summary>
-        public StartPageViewModel(MRUListVM recent)
-            : this()
-        {
-            this.mRecent = recent;
         }
         #endregion constructor
 
@@ -131,11 +120,13 @@ namespace Edi.Documents.ViewModels.StartPage
             }
         }
 
-        public MRUListVM MruList
+        public IMRUListViewModel MruList
         {
             get
             {
-                return this.mRecent;
+                var mruList = ServiceLocator.Current.GetInstance<IMRUListViewModel>();
+
+                return mruList;
             }
         }
 

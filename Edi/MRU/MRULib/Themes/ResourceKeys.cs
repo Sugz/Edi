@@ -1,11 +1,5 @@
 ﻿namespace MRULib.Themes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using System.Windows;
 
     /// <summary>
@@ -45,6 +39,11 @@
         /// Opacity value (0.0 - 1.0) of the checkmark pin when it is shown on mouseover.
         /// </summary>
         public static readonly ComponentResourceKey Pin_NoCheckMarkOpacitiy = new ComponentResourceKey(typeof(ResourceKeys), "Pin_NoCheckMarkOpacitiy");
+
+        /// <summary>
+        /// Opacity value (0.0 - 1.0) of the checkmark pin when it is shown on mouseover.
+        /// </summary>
+        public static readonly ComponentResourceKey Hyperlink_Foreground = new ComponentResourceKey(typeof(ResourceKeys), "Hyperlink_Foreground");
         #endregion Brush Keys
     }
 }

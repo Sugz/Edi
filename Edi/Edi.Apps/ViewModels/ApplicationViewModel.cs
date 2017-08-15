@@ -17,7 +17,7 @@ namespace Edi.Apps.ViewModels
     using Edi.Settings.Interfaces;
     using Edi.SettingsView.Config.ViewModels;
     using Edi.Themes.Interfaces;
-    using EdiApp.Events;   // XXX TODO Implementation in Edi.Core shouold have a different namespace
+    using EdiApp.Events;   // XXX TODO Implementation in Edi.Core should have a different namespace
     using Files.ViewModels.RecentFiles;
     using Microsoft.Practices.Prism.Modularity;
     using Microsoft.Practices.Prism.PubSubEvents;
@@ -26,7 +26,6 @@ namespace Edi.Apps.ViewModels
     using MRULib.MRU.Interfaces;
     using MRULib.MRU.ViewModels;
     using MsgBox;
-    using SimpleControls.MRU.ViewModel;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

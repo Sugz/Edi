@@ -4,7 +4,6 @@
 	using System.Xml.Serialization;
 	using FileSystemModels.Models;
 	using Edi.Settings.Interfaces;
-	using SimpleControls.MRU.ViewModel;
     using MRULib.MRU.Models.Persist;
 
     /// <summary>

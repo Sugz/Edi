@@ -106,8 +106,8 @@
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MsgBox, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.1\lib\net451\MsgBoxSamples_Demo_Version_1_4_0\MsgBox.dll</HintPath>
+    <Reference Include="MsgBox, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.2\lib\net451\MsgBox.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -120,8 +120,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UserNotification, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dirkster.MsgBox.1.4.1\lib\net451\MsgBoxSamples_Demo_Version_1_4_0\UserNotification.dll</HintPath>
+    <Reference Include="UserNotification, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dirkster.UserNotifications.1.3.1\lib\net451\UserNotification.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -135,7 +135,6 @@
     <Compile Include="ComboBox\ComboBoxWaterMarkTextInput.xaml.cs">
       <DependentUpon>ComboBoxWaterMarkTextInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hyperlink\FileHyperlink.cs" />
     <Compile Include="Hyperlink\WebHyperlink.cs" />
     <Compile Include="Local\Strings.de-DE.Designer.cs">
       <DependentUpon>Strings.de-DE.resx</DependentUpon>
@@ -192,19 +191,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.zh-Hans.resx</DependentUpon>
     </Compile>
-    <Compile Include="MRU\View\ListViewColumns.cs" />
-    <Compile Include="MRU\View\BoolOrToVisibilityConverter.cs" />
-    <Compile Include="MRU\Model\MRUEntry.cs" />
-    <Compile Include="MRU\Model\MRUList.cs" />
-    <Compile Include="MRU\View\PinableListView.cs" />
-    <Compile Include="MRU\View\PinableListViewItem.cs" />
-    <Compile Include="MRU\View\PinnableCheckbox.cs" />
-    <Compile Include="PathTrimmingTextBlock\Extensions.cs" />
-    <Compile Include="PathTrimmingTextBlock\PathTrimmingTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MRU\ViewModel\Base\BaseViewModel.cs" />
-    <Compile Include="MRU\ViewModel\MRUEntryVM.cs" />
-    <Compile Include="MRU\ViewModel\MRUListVM.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="WatermarkTextBox\TextBoxWithWatermark.cs" />
     <Compile Include="WatermarkTextBox\WatermarkHelper.cs" />

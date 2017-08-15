@@ -37,6 +37,15 @@
               typeof(PathTrimmingFileHyperlink),
               new PropertyMetadata(string.Empty));
 
+        // Using a DependencyProperty as the backing store for TextDecorations.
+        private static readonly DependencyProperty TextDecorationsProperty =
+            DependencyProperty.Register("TextDecorations",
+                typeof(TextDecoration),
+                typeof(PathTrimmingFileHyperlink),
+                new PropertyMetadata(null));
+
+
+
         /// <summary>
         /// Gets or sets a command to associate with the PathTrimmingFileHyperlink.
         /// 
@@ -175,6 +184,15 @@
         {
             get { return (string)this.GetValue(PathTrimmingFileHyperlink.TextProperty); }
             set { this.SetValue(PathTrimmingFileHyperlink.TextProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets/sets DependencyProperty for Hyperling TextDecorations (underline etc).
+        /// </summary>
+        public TextDecoration TextDecorations
+        {
+            get { return (TextDecoration)GetValue(TextDecorationsProperty); }
+            set { SetValue(TextDecorationsProperty, value); }
         }
         #endregion properties
 

@@ -6,10 +6,16 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     >
     <!-- Pin Control -->
-    <SolidColorBrush x:Key="{x:Static reskeys:ResourceKeys.Pin_Foreground}" Color="#C0FFFFFF" />
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                                ResourceId=Pin_Foreground}" Color="#C0FFFFFF" />
 
-    <SolidColorBrush x:Key="{x:Static reskeys:ResourceKeys.Pin_ForegroundBorder}" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                                ResourceId=Pin_ForegroundBorder}" Color="#FFFFFFFF" />
 
-    <sys:Double x:Key="{x:Static reskeys:ResourceKeys.Pin_NoCheckMarkOpacitiy}">0.75</sys:Double>
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                                ResourceId=Hyperlink_Foreground}" Color="#FFFEFEFE" />
+
+    <sys:Double x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                                ResourceId=Pin_NoCheckMarkOpacitiy}">0.75</sys:Double>
     
 </ResourceDictionary>

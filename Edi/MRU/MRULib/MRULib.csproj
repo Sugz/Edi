@@ -66,6 +66,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BindingProxy .cs" />
     <Compile Include="Controls\PathTrimmingFileHyperlink.xaml.cs">
       <DependentUpon>PathTrimmingFileHyperlink.xaml</DependentUpon>
     </Compile>
